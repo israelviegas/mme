@@ -88,11 +88,11 @@ public class AutomacaoMme {
     		subdiretorioRelatoriosBaixados = diretorioRelatorio + "\\" + "relatorios baixados " + dataAtual;
     		criaDiretorio(subdiretorioRelatoriosBaixados);
     		
-			// Deleta os diretórios que possuírem data de criação anterior à data de 7 dias atrás
+			// Deleta os diretï¿½rios que possuï¿½rem data de criaï¿½ï¿½o anterior ï¿½ data de 7 dias atrï¿½s
 			apagaDiretoriosDeRelatorios(Util.getValor("caminho.download.relatorios"));
 			
-			// As vezes o diretório que armazena dados temporários do Chome simplesmente some, daí o Selenium dá pau na hora de chamar o browser
-			// Com o método abaixo, crio essa pasta se ela não existir
+			// As vezes o diretï¿½rio que armazena dados temporï¿½rios do Chome simplesmente some, daï¿½ o Selenium dï¿½ pau na hora de chamar o browser
+			// Com o mï¿½todo abaixo, crio essa pasta se ela nï¿½o existir
 			criaDiretorioTemp();
 
     		executaAutomacaoMme(driver);
@@ -102,7 +102,7 @@ public class AutomacaoMme {
 			inserirStatusExecucaoNoBanco("Mme", dataAtualPlanilhaFinal, "Erro");
 
 		} finally {
-			//mensagemErro("Houve um problema na extração dos pedidos no Mme\n");
+			//mensagemErro("Houve um problema na extraï¿½ï¿½o dos pedidos no Mme\n");
 			//fazerLogout(wait);
 			if (driver != null) {
 				driver.quit();
@@ -131,111 +131,111 @@ public class AutomacaoMme {
     		listaMesAnoResourceTrend = new ArrayList<RelatorioResourceTrend>();
     		listaMesAnoMultiSegmentContractReport = new ArrayList<RelatorioMultiSegmentContractReport>();
     		
-    		System.out.println("Início: " + new SimpleDateFormat("dd_MM_yyyy HH_mm_ss").format(new Date()));
+    		System.out.println("Inï¿½cio: " + new SimpleDateFormat("dd_MM_yyyy HH_mm_ss").format(new Date()));
     		
     		driver = getWebDriver();
     		Thread.sleep(5000);
     		JavascriptExecutor js = (JavascriptExecutor) driver;
     		WebDriverWait wait = new WebDriverWait(driver, 60);
     		
-        	// Deleto arquivos que existirem no diretório relatório
+        	// Deleto arquivos que existirem no diretï¿½rio relatï¿½rio
         	apagaArquivosDiretorioDeRelatorios(Util.getValor("caminho.diretorio.relatorios"));
         	
-        	// Deleto arquivos que existirem no sub-diretório de relatórios baixados
+        	// Deleto arquivos que existirem no sub-diretï¿½rio de relatï¿½rios baixados
         	apagaArquivosDiretorioDeRelatorios(subdiretorioRelatoriosBaixados);
         	
 			// Contrato 9940191116 SW Factories
-        	// Histórico Passado + Atuais
+        	// Histï¿½rico Passado + Atuais
         	if (Util.getValor("contrato.9940191116.SW.Factories").equals("S")) {
         		contrato_9940191116_SW_Factories(driver, wait);
         	}
 			
 			// Contrato AM Faturamento
-			// Histórico Passado + Atuais
+			// Histï¿½rico Passado + Atuais
    			if (Util.getValor("contrato.AM.Faturamento").equals("S")) {
    				contrato_AM_Faturamento(driver, wait);
    			}
 			
 			// Contrato B2C SFA - Salesforce
-			// Histórico Passado
+			// Histï¿½rico Passado
    			if (Util.getValor("contrato.B2C.SFA.Salesforce").equals("S")) {
    				contrato_B2C_SFA_Salesforce(driver, wait);
    			}
 			
 			// Contrato Callidus
-			// Histórico Passado + Atuais
+			// Histï¿½rico Passado + Atuais
    			if (Util.getValor("contrato.Callidus").equals("S")) {
    				contrato_Callidus(driver, wait);
    			}
 			
 			// Contrato GVT Proforma
-			// Histórico Passado
+			// Histï¿½rico Passado
    			if (Util.getValor("contrato.GVT.Proforma").equals("S")) {
    				contrato_GVT_Proforma(driver, wait);
    			}
 			
 			// Contrato Hybris - eCommerce
-			// Histórico Passado
+			// Histï¿½rico Passado
    			if (Util.getValor("contrato.Hybris.eCommerce").equals("S")) {
    				contrato_Hybris_eCommerce(driver, wait);
    			}
 
 			// Contrato Digital Factory
-			// Histórico Passado + Atuais
+			// Histï¿½rico Passado + Atuais
    			if (Util.getValor("contrato.Digital.Factory").equals("S")) {
    				contrato_Digital_Factory(driver, wait);
    			}
    			
 			// Contrato AM Latam Brasil Fija Contrato Local
-			// Histórico Passado
+			// Histï¿½rico Passado
    			if (Util.getValor("contrato.AM.Latam.Brasil.Fija.Contrato.Local").equals("S")) {
    				contrato_AM_Latam_Brasil_Fija_Contrato_Local(driver, wait);
    			}
    			
 			// Contrato Nova Fabrica Design
-   			// Histórico Passado + Atuais
+   			// Histï¿½rico Passado + Atuais
    			if (Util.getValor("contrato.Nova.Fabrica.Design").equals("S")) {
    				contrato_Nova_Fabrica_Design(driver, wait);
    			}
    			
 			// Contrato Desligue Do Atis
-   			// Histórico Passado + Atuais
+   			// Histï¿½rico Passado + Atuais
    			if (Util.getValor("contrato.Desligue.Do.Atis").equals("S")) {
    				contrato_Desligue_Do_Atis(driver, wait);
    			}
   			
 			// Contrato Portal_Terra
-   			// Histórico Passado + Atuais
+   			// Histï¿½rico Passado + Atuais
    			if (Util.getValor("contrato.Portal.Terra").equals("S")) {
    				contrato_Portal_Terra(driver, wait);
    			}
  			
 			// Contrato Sustentacao VIVO GO
-   			// Histórico Passado + Atuais
+   			// Histï¿½rico Passado + Atuais
    			if (Util.getValor("contrato.Sustentacao.VIVO.GO").equals("S")) {
    				contrato_Sustentacao_VIVO_GO(driver, wait);
    			}
    			
 			// Contrato FiberCo Imp. Arquitet.BSS/OSS
-			// Histórico Passado + Atuais
+			// Histï¿½rico Passado + Atuais
    			if (Util.getValor("contrato.FiberCo.Imp.Arquitet.BSS.OSS").equals("S")) {
    				contrato_FiberCo_Imp_Arquitet_BSS_OSS(driver, wait);
    			}
    			
 			// Contrato RPA - Blue Prism
-			// Histórico Passado + Atuais
+			// Histï¿½rico Passado + Atuais
    			if (Util.getValor("contrato.RPA.Blue.Prism").equals("S")) {
    				contrato_RPA_Blue_Prism(driver, wait);
    			}
    			
-			// Contrato Proteção de dados
-        	// Histórico Passado + Atuais
+			// Contrato Proteï¿½ï¿½o de dados
+        	// Histï¿½rico Passado + Atuais
         	if (Util.getValor("contrato.Protecao.De.Dados").equals("S")) {
         		contrato_Protecao_De_Dados(driver, wait);
         	}
         	
 			// Contrato B2B Transformation
-        	// Histórico Passado + Atuais
+        	// Histï¿½rico Passado + Atuais
         	if (Util.getValor("contrato.B2B.Transformation").equals("S")) {
         		contrato_B2B_Transformation(driver, wait);
         	}
@@ -256,14 +256,14 @@ public class AutomacaoMme {
     		
     	} catch (Exception e) {
 			executaAutomacaoMme ++;
-			// Executo até 5 vezes se der erro no executaAutomacaoMme
+			// Executo atï¿½ 5 vezes se der erro no executaAutomacaoMme
 			if (executaAutomacaoMme <= 5) {
 				
-				System.out.println("Deu erro no método executaAutomacaoMme, tentativa de acerto: " + executaAutomacaoMme + "\n" + "Erro: " + e.getMessage());
+				System.out.println("Deu erro no mï¿½todo executaAutomacaoMme, tentativa de acerto: " + executaAutomacaoMme + "\n" + "Erro: " + e.getMessage());
 				executaAutomacaoMme(driver);
 			
 			} else {
-				throw new Exception("Ocorreu um erro no método executaAutomacaoMme: " + e);
+				throw new Exception("Ocorreu um erro no mï¿½todo executaAutomacaoMme: " + e);
 		    }
 
 		}
@@ -278,7 +278,7 @@ public class AutomacaoMme {
     
     public static void deletaMesAtualEMesAnteriorEInsereRelatoriosCostTransactionExtractNoBanco() throws Exception {
     	
-    	// Insere no banco a lista contendo todos os relatórios baixados
+    	// Insere no banco a lista contendo todos os relatï¿½rios baixados
     	if (listaRelatorioPlanilhaCostTransactionExtract != null && !listaRelatorioPlanilhaCostTransactionExtract.isEmpty()) {
     		
     		int contador = 0;
@@ -287,15 +287,15 @@ public class AutomacaoMme {
     			
     			for (String nomeContrato : listaNomesDeContratosDistintos) {
     				
-    				// Apagando o mês atual do contrato
+    				// Apagando o mï¿½s atual do contrato
     				MmeDao mmeDaoDeletarMesAtual = new MmeDao();
     				mmeDaoDeletarMesAtual.deletarRelatoriosCostTransactionExtract(mesAtual, anoAtual, nomeContrato);
-    				System.out.println("Relatorio Cost Transaction Extract. Apaguei todos os dados do banco do mês atual do contrato " + nomeContrato);
+    				System.out.println("Relatorio Cost Transaction Extract. Apaguei todos os dados do banco do mï¿½s atual do contrato " + nomeContrato);
     				
-    				// Apagando o mês anterior do contrato
+    				// Apagando o mï¿½s anterior do contrato
     				MmeDao mmeDaoDeletarMesAnterior = new MmeDao();
     				mmeDaoDeletarMesAnterior.deletarRelatoriosCostTransactionExtract(mesAnterior, anoCorreto, nomeContrato);
-    				System.out.println("Relatorio Cost Transaction Extract. Apaguei todos os dados do banco do mês anterior do contrato " + nomeContrato);
+    				System.out.println("Relatorio Cost Transaction Extract. Apaguei todos os dados do banco do mï¿½s anterior do contrato " + nomeContrato);
     				
     			}
     			
@@ -303,22 +303,22 @@ public class AutomacaoMme {
     		
     		for (RelatorioCostTransactionExtract relatorioCostTransactionExtract : listaRelatorioPlanilhaCostTransactionExtract) {
     			
-    			// Converto os valores de null para espaço em branco para gravar branco no banco e não dar problema
-    			// no relatório do sharepoint da Accenture
-    			// Esse relatório de sharepoint da Accenture é gerado através do banco
+    			// Converto os valores de null para espaï¿½o em branco para gravar branco no banco e nï¿½o dar problema
+    			// no relatï¿½rio do sharepoint da Accenture
+    			// Esse relatï¿½rio de sharepoint da Accenture ï¿½ gerado atravï¿½s do banco
     			Util.converteValorNullParaEspacoEmBrancoRelatorioCostTransactionExtract(relatorioCostTransactionExtract);
     			MmeDao mmeDaoInserirRelatorio = new MmeDao();
     			mmeDaoInserirRelatorio.inserirRelatoriosCostTransactionExtract(relatorioCostTransactionExtract);
     			contador++;
-    			System.out.println("Relatorio Cost Transaction Extract. Inseri o relatório de número: " + contador + " de um total de " + listaRelatorioPlanilhaCostTransactionExtract.size() + " nome do contrato: " + relatorioCostTransactionExtract.getContrato());
+    			System.out.println("Relatorio Cost Transaction Extract. Inseri o relatï¿½rio de nï¿½mero: " + contador + " de um total de " + listaRelatorioPlanilhaCostTransactionExtract.size() + " nome do contrato: " + relatorioCostTransactionExtract.getContrato());
     			
     		}
     		
-    		mensagemResultadoRelatoriosCostTransactionExtract = "Relatórios Cost Transaction Extract do Mme gravados no banco com sucesso";
+    		mensagemResultadoRelatoriosCostTransactionExtract = "Relatï¿½rios Cost Transaction Extract do Mme gravados no banco com sucesso";
     		
     	} else {
     		
-    		mensagemResultadoRelatoriosCostTransactionExtract = "Não foram encontrados relatórios Cost Transaction Extract do Mme para os contratos processados";
+    		mensagemResultadoRelatoriosCostTransactionExtract = "Nï¿½o foram encontrados relatï¿½rios Cost Transaction Extract do Mme para os contratos processados";
     		
     	}
     
@@ -332,7 +332,7 @@ public class AutomacaoMme {
     
     public static void deletaMesAtualEInsereRelatoriosResourceTrendNoBanco() throws Exception {
     	
-    	// Insere no banco a lista contendo todos os relatórios baixados
+    	// Insere no banco a lista contendo todos os relatï¿½rios baixados
     	if (listaRelatorioPlanilhaResourceTrend != null && !listaRelatorioPlanilhaResourceTrend.isEmpty()) {
     		
     		int contador = 0;
@@ -341,10 +341,10 @@ public class AutomacaoMme {
     			
     			for (RelatorioResourceTrend relatorioResourceTrend : listaMesAnoResourceTrend) {
     				
-    				// Apagando o mês atual do contrato
+    				// Apagando o mï¿½s atual do contrato
     				MmeDao mmeDaoDeletarMesAtual = new MmeDao();
     				mmeDaoDeletarMesAtual.deletarRelatoriosResourceTrend(Integer.parseInt(relatorioResourceTrend.getMes()), Integer.parseInt(relatorioResourceTrend.getAno()), relatorioResourceTrend.getContrato());
-    				System.out.println("Relatorio Resource Trend. Apaguei todos os dados do banco do mês atual do contrato " + relatorioResourceTrend.getContrato());
+    				System.out.println("Relatorio Resource Trend. Apaguei todos os dados do banco do mï¿½s atual do contrato " + relatorioResourceTrend.getContrato());
     				
     			}
     			
@@ -352,22 +352,22 @@ public class AutomacaoMme {
     		
     		for (RelatorioResourceTrend relatorioResourceTrend : listaRelatorioPlanilhaResourceTrend) {
     			
-    			// Converto os valores de null para espaço em branco para gravar branco no banco e não dar problema
-    			// no relatório do sharepoint da Accenture
-    			// Esse relatório de sharepoint da Accenture é gerado através do banco
+    			// Converto os valores de null para espaï¿½o em branco para gravar branco no banco e nï¿½o dar problema
+    			// no relatï¿½rio do sharepoint da Accenture
+    			// Esse relatï¿½rio de sharepoint da Accenture ï¿½ gerado atravï¿½s do banco
     			Util.converteValorNullParaEspacoEmBrancoRelatorioResourceTrend(relatorioResourceTrend);
     			MmeDao mmeDaoInserirRelatorio = new MmeDao();
     			mmeDaoInserirRelatorio.inserirRelatoriosResourceTrend(relatorioResourceTrend);
     			contador++;
-    			System.out.println("Relatorio Resource Trend. Inseri o relatório de número: " + contador + " de um total de " + listaRelatorioPlanilhaResourceTrend.size() + " nome do contrato: " + relatorioResourceTrend.getContrato());
+    			System.out.println("Relatorio Resource Trend. Inseri o relatï¿½rio de nï¿½mero: " + contador + " de um total de " + listaRelatorioPlanilhaResourceTrend.size() + " nome do contrato: " + relatorioResourceTrend.getContrato());
     			
     		}
     		
-    		mensagemResultadoRelatoriosResourceTrend = "Relatórios Resource Trend do Mme gravados no banco com sucesso";
+    		mensagemResultadoRelatoriosResourceTrend = "Relatï¿½rios Resource Trend do Mme gravados no banco com sucesso";
     		
     	} else {
     		
-    		mensagemResultadoRelatoriosResourceTrend = "Não foram encontrados relatórios Resource Trend do Mme para os contratos processados";
+    		mensagemResultadoRelatoriosResourceTrend = "Nï¿½o foram encontrados relatï¿½rios Resource Trend do Mme para os contratos processados";
     		
     	}
     
@@ -381,7 +381,7 @@ public class AutomacaoMme {
     
     public static void deletaMesAtualEInsereRelatoriosMultiSegmentContractReportNoBanco() throws Exception {
     	
-    	// Insere no banco a lista contendo todos os relatórios baixados
+    	// Insere no banco a lista contendo todos os relatï¿½rios baixados
     	if (listaRelatorioPlanilhaMultiSegmentContractReport != null && !listaRelatorioPlanilhaMultiSegmentContractReport.isEmpty()) {
     		
     		int contador = 0;
@@ -389,10 +389,10 @@ public class AutomacaoMme {
     		if (listaMesAnoMultiSegmentContractReport != null && !listaMesAnoMultiSegmentContractReport.isEmpty()) {
     			
     			for (RelatorioMultiSegmentContractReport relatorioMultiSegmentContractReport : listaMesAnoMultiSegmentContractReport) {
-    				// Apagando o mês atual do contrato
+    				// Apagando o mï¿½s atual do contrato
     				MmeDao mmeDaoDeletarMesAtual = new MmeDao();
     				mmeDaoDeletarMesAtual.deletarRelatoriosMultiSegmentContractReport(Integer.parseInt(relatorioMultiSegmentContractReport.getMesMasterActive()), Integer.parseInt(relatorioMultiSegmentContractReport.getAnoMasterActive()), relatorioMultiSegmentContractReport.getContrato());
-    				System.out.println("Multi-Segment Contract Report. Apaguei todos os dados do banco do mês atual e futuro do contrato " + relatorioMultiSegmentContractReport.getContrato());
+    				System.out.println("Multi-Segment Contract Report. Apaguei todos os dados do banco do mï¿½s atual e futuro do contrato " + relatorioMultiSegmentContractReport.getContrato());
     				
     			}
     			
@@ -400,22 +400,22 @@ public class AutomacaoMme {
     		
     		for (RelatorioMultiSegmentContractReport relatorioMultiSegmentContractReport : listaRelatorioPlanilhaMultiSegmentContractReport) {
     			
-    			// Converto os valores de null para espaço em branco para gravar branco no banco e não dar problema
-    			// no relatório do sharepoint da Accenture
-    			// Esse relatório de sharepoint da Accenture é gerado através do banco
+    			// Converto os valores de null para espaï¿½o em branco para gravar branco no banco e nï¿½o dar problema
+    			// no relatï¿½rio do sharepoint da Accenture
+    			// Esse relatï¿½rio de sharepoint da Accenture ï¿½ gerado atravï¿½s do banco
     			Util.converteValorNullParaEspacoEmBrancoRelatorioMultiSegmentContractReport(relatorioMultiSegmentContractReport);
     			MmeDao mmeDaoInserirRelatorio = new MmeDao();
     			mmeDaoInserirRelatorio.inserirRelatoriosMultiSegmentContractReport(relatorioMultiSegmentContractReport);
     			contador++;
-    			System.out.println("Relatorio Multi-Segment Contract Report. Inseri o relatório de número: " + contador + " de um total de " + listaRelatorioPlanilhaMultiSegmentContractReport.size() + " nome do contrato: " + relatorioMultiSegmentContractReport.getContrato());
+    			System.out.println("Relatorio Multi-Segment Contract Report. Inseri o relatï¿½rio de nï¿½mero: " + contador + " de um total de " + listaRelatorioPlanilhaMultiSegmentContractReport.size() + " nome do contrato: " + relatorioMultiSegmentContractReport.getContrato());
     			
     		}
     		
-    		mensagemResultadoRelatoriosMultiSegmentContractReport = "Relatórios Multi-Segment Contract Report do Mme gravados no banco com sucesso";
+    		mensagemResultadoRelatoriosMultiSegmentContractReport = "Relatï¿½rios Multi-Segment Contract Report do Mme gravados no banco com sucesso";
     		
     	} else {
     		
-    		mensagemResultadoRelatoriosMultiSegmentContractReport = "Não foram encontrados relatórios Multi-Segment Contract Report do Mme para os contratos processados";
+    		mensagemResultadoRelatoriosMultiSegmentContractReport = "Nï¿½o foram encontrados relatï¿½rios Multi-Segment Contract Report do Mme para os contratos processados";
     		
     	}
     
@@ -424,8 +424,8 @@ public class AutomacaoMme {
     public static void fecharBarraInferiorComInformacoesDaAccenture(WebDriver driver) throws Exception {
     	
 	    // Se aparecer a Hide, clico na aba para fechar
-	    // Aguardo até 5 segundos para a opção aparecer
-	    // Se ela não aparecer dará erro, daí sigo adiante
+	    // Aguardo atï¿½ 5 segundos para a opï¿½ï¿½o aparecer
+	    // Se ela nï¿½o aparecer darï¿½ erro, daï¿½ sigo adiante
     	try {
     		
     		WebDriverWait waitInformacoes = new WebDriverWait(driver, 5);
@@ -434,7 +434,7 @@ public class AutomacaoMme {
     		waitInformacoes.until(ExpectedConditions.elementToBeClickable(By.xpath("//div [text()='"+textoHide+"']"))).click();
 		
     	} catch (Exception e) {
-    		//System.out.println("Deu erro na hora de clicar na opção Hide");
+    		//System.out.println("Deu erro na hora de clicar na opï¿½ï¿½o Hide");
 		}
     	
     }
@@ -456,14 +456,14 @@ public class AutomacaoMme {
         }
         
         if (!sucesso) {
-        	throw new Exception("Ocorreu um erro no momento de mover o relatório " + caminhoArquivoOrigem + " para " + caminhoDiretorioDestino);
+        	throw new Exception("Ocorreu um erro no momento de mover o relatï¿½rio " + caminhoArquivoOrigem + " para " + caminhoDiretorioDestino);
         }
         
     }
     
     public static String retornaNomeArquivoAlterado(String nomeArquivo) throws Exception{
     	
-    	// Preciso alterar o nome dos arquivos antes de movê-los porque temos nomes de arquivos iguais
+    	// Preciso alterar o nome dos arquivos antes de movï¿½-los porque temos nomes de arquivos iguais
     	String arquivo = nomeArquivo;
     	contadorParaAlterarNomeArquivos = contadorParaAlterarNomeArquivos + 1;
     	String[] partesNomeArquivo = arquivo.split("\\.");
@@ -495,7 +495,7 @@ public class AutomacaoMme {
 		   XSSFSheet sheetRelatorio = workbook.getSheet("RawData");
 		   
 		   // Uso o DataFormatter para deixar todos os campos como String, inclusive
-		   // os que tem números
+		   // os que tem nï¿½meros
 		   DataFormatter formatter = new DataFormatter();
 		   for (int i=0; i <= sheetRelatorio.getLastRowNum(); i++) {
 		       Row row = sheetRelatorio.getRow(i);
@@ -658,18 +658,18 @@ public class AutomacaoMme {
 		           // Contrato
 		           relatorioMultiSegmentContractReport.setContrato(contrato);
 
-		           // Data Extração
+		           // Data Extraï¿½ï¿½o
 		           relatorioMultiSegmentContractReport.setDataExtracao(dataAtualBancoFinal);
 		           
-		           // Data Referência
-		           // Equivale ao campo Month do relatório, porém vou salvá-lo no formato yyyy-MM-dd
+		           // Data Referï¿½ncia
+		           // Equivale ao campo Month do relatï¿½rio, porï¿½m vou salvï¿½-lo no formato yyyy-MM-dd
 		           String mesCampoMonth = "01";
 		           String anoCampoMonth = "1999";
 		           if (relatorioMultiSegmentContractReport.getMonth() != null && !relatorioMultiSegmentContractReport.getMonth().isEmpty()) {
 		        	   
 		        	   mesCampoMonth = retornaNumeroMes2(relatorioMultiSegmentContractReport.getMonth());
 
-		        	   // Retirando os caracteres que não forem números para trazer somente o ano
+		        	   // Retirando os caracteres que nï¿½o forem nï¿½meros para trazer somente o ano
 		        	   anoCampoMonth = relatorioMultiSegmentContractReport.getMonth().replaceAll("[^0-9]", "").trim();
 		           
 		           }
@@ -688,8 +688,8 @@ public class AutomacaoMme {
 		   
 			} catch (FileNotFoundException e) {
 			   e.printStackTrace();
-			   System.out.println("Arquivo Excel de relatório não encontrado!");
-			   throw new Exception("Arquivo Excel de relatório não encontrado!");
+			   System.out.println("Arquivo Excel de relatï¿½rio nï¿½o encontrado!");
+			   throw new Exception("Arquivo Excel de relatï¿½rio nï¿½o encontrado!");
 			
 			} finally {
 			
@@ -700,8 +700,8 @@ public class AutomacaoMme {
 			}
 		
 			if (listaRelatorioPlanilhaMultiSegmentContractReport.size() == 0) {
-			   //Pode ser que existam arquivos vazios, então não posso lançar exceção aqui
-				//throw new Exception("Lista de projetos está vazia");
+			   //Pode ser que existam arquivos vazios, entï¿½o nï¿½o posso lanï¿½ar exceï¿½ï¿½o aqui
+				//throw new Exception("Lista de projetos estï¿½ vazia");
 			}
 			
 		}
@@ -722,7 +722,7 @@ public class AutomacaoMme {
 		   XSSFSheet sheetRelatorio = workbook.getSheet("Raw Data");
 		   
 		   // Uso o DataFormatter para deixar todos os campos como String, inclusive
-		   // os que tem números
+		   // os que tem nï¿½meros
 		   DataFormatter formatter = new DataFormatter();
 		   for (int i=0; i <= sheetRelatorio.getLastRowNum(); i++) {
 		       Row row = sheetRelatorio.getRow(i);
@@ -873,10 +873,10 @@ public class AutomacaoMme {
 		           // Contrato
 		           relatorioResourceTrend.setContrato(contrato);
 
-		           // Data Extração
+		           // Data Extraï¿½ï¿½o
 		           relatorioResourceTrend.setDataExtracao(dataAtualBancoFinal);
 		           
-		           // Data Referência
+		           // Data Referï¿½ncia
 		           Date dataReferencia = formatoDataReferencia.parse(ano + "-" + mes + "-" + "01");
 		           java.sql.Date dataReferenciaFinal = new java.sql.Date(dataReferencia.getTime());
 		           relatorioResourceTrend.setDataReferencia(dataReferenciaFinal);
@@ -891,8 +891,8 @@ public class AutomacaoMme {
 		   
 			} catch (FileNotFoundException e) {
 			   e.printStackTrace();
-			   System.out.println("Arquivo Excel de relatório não encontrado!");
-			   throw new Exception("Arquivo Excel de relatório não encontrado!");
+			   System.out.println("Arquivo Excel de relatï¿½rio nï¿½o encontrado!");
+			   throw new Exception("Arquivo Excel de relatï¿½rio nï¿½o encontrado!");
 			
 			} finally {
 			
@@ -903,8 +903,8 @@ public class AutomacaoMme {
 			}
 		
 			if (listaRelatorioPlanilhaResourceTrend.size() == 0) {
-			   //Pode ser que existam arquivos vazios, então não posso lançar exceção aqui
-				//throw new Exception("Lista de projetos está vazia");
+			   //Pode ser que existam arquivos vazios, entï¿½o nï¿½o posso lanï¿½ar exceï¿½ï¿½o aqui
+				//throw new Exception("Lista de projetos estï¿½ vazia");
 			}
 			
 		}
@@ -925,7 +925,7 @@ public class AutomacaoMme {
 		   XSSFSheet sheetRelatorio = workbook.getSheet("RawData");
 		   
 		   // Uso o DataFormatter para deixar todos os campos como String, inclusive
-		   // os que tem números
+		   // os que tem nï¿½meros
 		   DataFormatter formatter = new DataFormatter();
 		   Set<String> listaPeridosDeExtracaoDistintos = new HashSet<String>();
 		   List<RelatorioCostTransactionExtract> listaRelatorioTemporaria = new ArrayList<RelatorioCostTransactionExtract>();
@@ -1235,10 +1235,10 @@ public class AutomacaoMme {
 		           // Contrato
 		           relatorioCostTransactionExtract.setContrato(contrato);
 
-		           // Data Extração
+		           // Data Extraï¿½ï¿½o
 		           relatorioCostTransactionExtract.setDataExtracao(dataAtualBancoFinal);
 		           
-		           // Data Referência
+		           // Data Referï¿½ncia
 		           Date dataReferencia = formatoDataReferencia.parse(ano + "-" + mes + "-" + "01");
 		           java.sql.Date dataReferenciaFinal = new java.sql.Date(dataReferencia.getTime());
 		           relatorioCostTransactionExtract.setDataReferencia(dataReferenciaFinal);
@@ -1246,7 +1246,7 @@ public class AutomacaoMme {
 		           // Periodo
 		           relatorioCostTransactionExtract.setPeriodo(periodo);
 		           
-		           // Armazeno os períodos de extração distintos
+		           // Armazeno os perï¿½odos de extraï¿½ï¿½o distintos
 		           //listaPeridosDeExtracaoDistintos.add(relatorioCostTransactionExtract.getPostingPeriod());
 
 		           if (relatorioCostTransactionExtract != null && !Util.relatorioCostTransactionExtractPossuiTodosCamposNulos(relatorioCostTransactionExtract)) {
@@ -1258,7 +1258,7 @@ public class AutomacaoMme {
 		   }
 		   
 		   // Existem alguns registros da planilha que possuem o campo PostingPeriod em branco
-		   // Preencho esses campos com o valor dos outros PostingPeriod que possuem valor, porém
+		   // Preencho esses campos com o valor dos outros PostingPeriod que possuem valor, porï¿½m
 		   // os salvo no campo Data_Referencia
 		   //preencheListaRelatorioTemporariaPlanilhaCostTransactionExtractComDataReferencia(listaPeridosDeExtracaoDistintos, listaRelatorioTemporaria);
 		   
@@ -1267,8 +1267,8 @@ public class AutomacaoMme {
 		   
 			} catch (FileNotFoundException e) {
 			   e.printStackTrace();
-			   System.out.println("Arquivo Excel de relatório não encontrado!");
-			   throw new Exception("Arquivo Excel de relatório não encontrado!");
+			   System.out.println("Arquivo Excel de relatï¿½rio nï¿½o encontrado!");
+			   throw new Exception("Arquivo Excel de relatï¿½rio nï¿½o encontrado!");
 			
 			} finally {
 			
@@ -1279,8 +1279,8 @@ public class AutomacaoMme {
 			}
 		
 			if (listaRelatorioPlanilhaCostTransactionExtract.size() == 0) {
-			   //Pode ser que existam arquivos vazios, então não posso lançar exceção aqui
-				//throw new Exception("Lista de projetos está vazia");
+			   //Pode ser que existam arquivos vazios, entï¿½o nï¿½o posso lanï¿½ar exceï¿½ï¿½o aqui
+				//throw new Exception("Lista de projetos estï¿½ vazia");
 			}
 			
 		}
@@ -1321,8 +1321,8 @@ public class AutomacaoMme {
 	
 	   public static boolean verificaArquivoValido(String item) throws Exception{
 		   
-			// O arquivo está demorando para baixar, então precio garantir que só irei
-			// processá-lo quando ele estiver íntegro e com o nome completo baixado
+			// O arquivo estï¿½ demorando para baixar, entï¿½o precio garantir que sï¿½ irei
+			// processï¿½-lo quando ele estiver ï¿½ntegro e com o nome completo baixado
 		   
 		   boolean isArquivoValido = true;
 			
@@ -1354,17 +1354,17 @@ public class AutomacaoMme {
 						
 						String caminhoArquivo = caminhoDiretorioOrigem + Util.getValor("separador.diretorio") + item;
 						File arquivo = new File(caminhoArquivo);
-						// Se existirem arquivos, os movo para a pasta de saída
+						// Se existirem arquivos, os movo para a pasta de saï¿½da
 						if (arquivo.exists() && arquivo.isFile()) {
 							Thread.sleep(1000);
-							// As vezes o arquivo está demorando para baixar, então precio garantir que só irei
-							// processá-lo quando ele estiver íntegro e com o nome completo baixado
-							// Então fico tentando até ele ter baixado completamente 
+							// As vezes o arquivo estï¿½ demorando para baixar, entï¿½o precio garantir que sï¿½ irei
+							// processï¿½-lo quando ele estiver ï¿½ntegro e com o nome completo baixado
+							// Entï¿½o fico tentando atï¿½ ele ter baixado completamente 
 							int indiceArquivoValido = item.indexOf("Multi-Segment Contract Report");
 							if (indiceArquivoValido == -1) {
 								contadorErrosArquivoInvalido++;
 								if (contadorErrosArquivoInvalido < 30) {
-									System.out.println("Arquivo " + item + " ainda não está pronto.  Tentativa de numero: " + contadorErrosArquivoInvalido);
+									System.out.println("Arquivo " + item + " ainda nï¿½o estï¿½ pronto.  Tentativa de numero: " + contadorErrosArquivoInvalido);
 									Thread.sleep(3000);
 									listaEMovePlanilhasMultiSegmentContractReport(caminhoDiretorioOrigem, caminhoDiretorioDestino, contrato);
 								} else {
@@ -1372,9 +1372,9 @@ public class AutomacaoMme {
 								}
 							}
 							
-							// Lê os relatórios baixados e armazena todas as linhas das planilhas em uma lista
+							// Lï¿½ os relatï¿½rios baixados e armazena todas as linhas das planilhas em uma lista
 				    		lerPlanilhaMultiSegmentContractReport(caminhoArquivo, contrato);
-		            		//Move o relatório baixado do diretório relatorios para o diretório correto
+		            		//Move o relatï¿½rio baixado do diretï¿½rio relatorios para o diretï¿½rio correto
 		            		moverArquivosEntreDiretorios(caminhoArquivo, caminhoDiretorioDestino);
 						}
 
@@ -1384,7 +1384,7 @@ public class AutomacaoMme {
 	        }
 	        
 	        if (!sucesso) {
-	        	throw new Exception("Não existe o diretório: " + caminhoDiretorioOrigem);
+	        	throw new Exception("Nï¿½o existe o diretï¿½rio: " + caminhoDiretorioOrigem);
 	        }
 	        
 	    }
@@ -1406,17 +1406,17 @@ public class AutomacaoMme {
 						
 						String caminhoArquivo = caminhoDiretorioOrigem + Util.getValor("separador.diretorio") + item;
 						File arquivo = new File(caminhoArquivo);
-						// Se existirem arquivos, os movo para a pasta de saída
+						// Se existirem arquivos, os movo para a pasta de saï¿½da
 						if (arquivo.exists() && arquivo.isFile()) {
 							Thread.sleep(1000);
-							// As vezes o arquivo está demorando para baixar, então precio garantir que só irei
-							// processá-lo quando ele estiver íntegro e com o nome completo baixado
-							// Então fico tentando até ele ter baixado completamente 
+							// As vezes o arquivo estï¿½ demorando para baixar, entï¿½o precio garantir que sï¿½ irei
+							// processï¿½-lo quando ele estiver ï¿½ntegro e com o nome completo baixado
+							// Entï¿½o fico tentando atï¿½ ele ter baixado completamente 
 							int indiceArquivoValido = item.indexOf("Resource Trend");
 							if (indiceArquivoValido == -1) {
 								contadorErrosArquivoInvalido++;
 								if (contadorErrosArquivoInvalido < 30) {
-									System.out.println("Arquivo " + item + " ainda não está pronto.  Tentativa de numero: " + contadorErrosArquivoInvalido);
+									System.out.println("Arquivo " + item + " ainda nï¿½o estï¿½ pronto.  Tentativa de numero: " + contadorErrosArquivoInvalido);
 									Thread.sleep(3000);
 									listaEMovePlanilhasResourceTrend(caminhoDiretorioOrigem, caminhoDiretorioDestino, contrato, ano, mes);
 								} else {
@@ -1424,9 +1424,9 @@ public class AutomacaoMme {
 								}
 							}
 							
-							// Lê os relatórios baixados e armazena todas as linhas das planilhas em uma lista
+							// Lï¿½ os relatï¿½rios baixados e armazena todas as linhas das planilhas em uma lista
 				    		lerPlanilhaResourceTrend(caminhoArquivo, contrato, ano, mes);
-		            		//Move o relatório baixado do diretório relatorios para o diretório correto
+		            		//Move o relatï¿½rio baixado do diretï¿½rio relatorios para o diretï¿½rio correto
 		            		moverArquivosEntreDiretorios(caminhoArquivo, caminhoDiretorioDestino);
 						}
 
@@ -1436,7 +1436,7 @@ public class AutomacaoMme {
 	        }
 	        
 	        if (!sucesso) {
-	        	throw new Exception("Não existe o diretório: " + caminhoDiretorioOrigem);
+	        	throw new Exception("Nï¿½o existe o diretï¿½rio: " + caminhoDiretorioOrigem);
 	        }
 	        
 	    }
@@ -1457,17 +1457,17 @@ public class AutomacaoMme {
 						
 						String caminhoArquivo = caminhoDiretorioOrigem + Util.getValor("separador.diretorio") + item;
 						File arquivo = new File(caminhoArquivo);
-						// Se existirem arquivos, os movo para a pasta de saída
+						// Se existirem arquivos, os movo para a pasta de saï¿½da
 						if (arquivo.exists() && arquivo.isFile()) {
 							Thread.sleep(1000);
-							// As vezes o arquivo está demorando para baixar, então precio garantir que só irei
-							// processá-lo quando ele estiver íntegro e com o nome completo baixado
-							// Então fico tentando até ele ter baixado completamente 
+							// As vezes o arquivo estï¿½ demorando para baixar, entï¿½o precio garantir que sï¿½ irei
+							// processï¿½-lo quando ele estiver ï¿½ntegro e com o nome completo baixado
+							// Entï¿½o fico tentando atï¿½ ele ter baixado completamente 
 							int indiceArquivoValido = item.indexOf("Cost");
 							if (indiceArquivoValido == -1) {
 								contadorErrosArquivoInvalido++;
 								if (contadorErrosArquivoInvalido < 30) {
-									System.out.println("Arquivo " + item + " ainda não está pronto.  Tentativa de numero: " + contadorErrosArquivoInvalido);
+									System.out.println("Arquivo " + item + " ainda nï¿½o estï¿½ pronto.  Tentativa de numero: " + contadorErrosArquivoInvalido);
 									Thread.sleep(3000);
 									listaEMovePlanilhasCostTransactionExtract(caminhoDiretorioOrigem, caminhoDiretorioDestino, contrato, mes, ano, periodo);
 								} else {
@@ -1475,9 +1475,9 @@ public class AutomacaoMme {
 								}
 							}
 							
-							// Lê os relatórios baixados e armazena todas as linhas das planilhas em uma lista
+							// Lï¿½ os relatï¿½rios baixados e armazena todas as linhas das planilhas em uma lista
 				    		lerPlanilhaCostTransactionExtract(caminhoArquivo, contrato, mes, ano, periodo);
-		            		//Move o relatório baixado do diretório relatorios para o diretório correto
+		            		//Move o relatï¿½rio baixado do diretï¿½rio relatorios para o diretï¿½rio correto
 		            		moverArquivosEntreDiretorios(caminhoArquivo, caminhoDiretorioDestino);
 						}
 
@@ -1487,7 +1487,7 @@ public class AutomacaoMme {
 	        }
 	        
 	        if (!sucesso) {
-	        	throw new Exception("Não existe o diretório: " + caminhoDiretorioOrigem);
+	        	throw new Exception("Nï¿½o existe o diretï¿½rio: " + caminhoDiretorioOrigem);
 	        }
 	        
 	    }
@@ -1536,7 +1536,7 @@ public class AutomacaoMme {
 	        if (diretorio.exists() && diretorio.isDirectory()) {
 	        	sucesso = true;
 	        	
-	        	//lista os nomes dos diretórios
+	        	//lista os nomes dos diretï¿½rios
 				String itens [] = diretorio.list();
 				
 				if (itens != null && itens.length > 0) {
@@ -1550,7 +1550,7 @@ public class AutomacaoMme {
 							Long dataModificacaoPasta =  FileUtils.lastModified(pasta);
 							Date dataModificacaoPasta2 = new Date(dataModificacaoPasta);
 							
-							// Se existirem diretórios com a data anterior à data de 7 dias atrás, os deleto
+							// Se existirem diretï¿½rios com a data anterior ï¿½ data de 7 dias atrï¿½s, os deleto
 							if (dataModificacaoPasta2.before(dataAntes7Dias)) {
 								FileUtils.deleteQuietly(pasta);
 							}
@@ -1599,9 +1599,9 @@ public class AutomacaoMme {
 	public static void abrirSiteMme(WebDriver driver, WebDriverWait wait) throws Exception {
 
 		// Abrindo a URl do Mme
-		// Quando o Dani executa o robô na máquina remota da Accenture, o botão de Select do pop-up de contratos fica escondido
-		// Então abro o Chrome em modo full-screen
-		// Também tem que ser colocada essa opção no método getWebDriver que fica logo mais abaixo do código
+		// Quando o Dani executa o robï¿½ na mï¿½quina remota da Accenture, o botï¿½o de Select do pop-up de contratos fica escondido
+		// Entï¿½o abro o Chrome em modo full-screen
+		// Tambï¿½m tem que ser colocada essa opï¿½ï¿½o no mï¿½todo getWebDriver que fica logo mais abaixo do cï¿½digo
 		driver.manage().window().maximize();
 		driver.get(Util.getValor("url.mme"));
 		Thread.sleep(10000);
@@ -1617,7 +1617,7 @@ public class AutomacaoMme {
 			waitFecharPopUpMensagem.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"acn-modal\"]/div/div[2]/div[1]/label/span"))).click();
 			Thread.sleep(1000);
 		} catch (Exception e) {
-			System.out.println("Provavelmente não foi encontrado pop-up para ser fechado");
+			System.out.println("Provavelmente nï¿½o foi encontrado pop-up para ser fechado");
 		}
 		
 		try {
@@ -1625,7 +1625,7 @@ public class AutomacaoMme {
 			waitFecharPopUpMensagem.until(ExpectedConditions.elementToBeClickable(By.className("acn-modal-del-icon"))).click();
 			Thread.sleep(1000);
 		} catch (Exception e) {
-			System.out.println("Provavelmente não foi encontrado pop-up para ser fechado");
+			System.out.println("Provavelmente nï¿½o foi encontrado pop-up para ser fechado");
 		}
 		
 	}
@@ -1638,12 +1638,12 @@ public class AutomacaoMme {
 		try {
 			for (int i = 0; i < 2; i++) {
 				// Tenta fechar mensagem na parte superior da tela
-				// Estou executando 2 vezes porquê já vi aparecer duas mensagens
+				// Estou executando 2 vezes porquï¿½ jï¿½ vi aparecer duas mensagens
 				waitFecharMensagemBarraSuperior.until(ExpectedConditions.elementToBeClickable(By.className("acn-alert-close-icon"))).click();
 				Thread.sleep(1000);
 			}
 		} catch (Exception e) {
-			System.out.println("Provavelmente a mensagem na parte superior da tela não apareceu");
+			System.out.println("Provavelmente a mensagem na parte superior da tela nï¿½o apareceu");
 		}
 		
 	}
@@ -1658,16 +1658,16 @@ public class AutomacaoMme {
 		
 		try {
 
-			// As vezes a caixa de selecão de contratos já aparece na tela
-			// Então tento cancelar a caixa
-			// Se não conseguir cancelar é porque a caixa não apareceu, então a abro mais abaixo 
+			// As vezes a caixa de selecï¿½o de contratos jï¿½ aparece na tela
+			// Entï¿½o tento cancelar a caixa
+			// Se nï¿½o conseguir cancelar ï¿½ porque a caixa nï¿½o apareceu, entï¿½o a abro mais abaixo 
 			waitCancel.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(.,'Cancel')]"))).click();
 			Thread.sleep(3000);
 		} catch (Exception e) {
-			System.out.println("Provavelmente a caixa de seleção de contratos não apareceu");
+			System.out.println("Provavelmente a caixa de seleï¿½ï¿½o de contratos nï¿½o apareceu");
 		}
 		
-        // Abrindo a caixa de seleção de contratos
+        // Abrindo a caixa de seleï¿½ï¿½o de contratos
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='top-nav-breadcrumb-1']/div/div/button"))).click();
 		} catch (Exception e) {
@@ -1692,7 +1692,7 @@ public class AutomacaoMme {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idCampoPesquisa))).sendKeys(textoTelefonicaGroup);
 		Thread.sleep(3000);
 		
-		// Seleciona a opção TELEFONICA GROUP
+		// Seleciona a opï¿½ï¿½o TELEFONICA GROUP
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='results']/mme-item/span"))).click();
 		Thread.sleep(3000);
 
@@ -1722,7 +1722,7 @@ public class AutomacaoMme {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(.,'Update Forecast')]"))).click();
 		Thread.sleep(2000);
 		
-		// Clicando na opção Advanced Reporting do menu
+		// Clicando na opï¿½ï¿½o Advanced Reporting do menu
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Advanced Reporting')]"))).click();
 		Thread.sleep(2000);
 		
@@ -1732,20 +1732,20 @@ public class AutomacaoMme {
 	
 	public static void passosFinaisPesquisaDeContratos(WebDriver driver, WebDriverWait wait) throws Exception {
 		
-		// Clicando no botão Select
+		// Clicando no botï¿½o Select
 		String textoSelect= "Select";
 		Thread.sleep(5000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span [text()='"+textoSelect+"']"))).click();
 		
 		WebDriverWait waitCancel = new WebDriverWait(driver, 2);
 		try {
-			// O botão Select está provavelmente desabilitado porquê está pesquisando no projeto já selecionado anteriormente
-			// Porém mesmo desabilitado, o Selenium encontra o botão Select
-			// Então clico no botão Cancel para o modal sumir
+			// O botï¿½o Select estï¿½ provavelmente desabilitado porquï¿½ estï¿½ pesquisando no projeto jï¿½ selecionado anteriormente
+			// Porï¿½m mesmo desabilitado, o Selenium encontra o botï¿½o Select
+			// Entï¿½o clico no botï¿½o Cancel para o modal sumir
 			waitCancel.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(.,'Cancel')]"))).click();
 			Thread.sleep(3000);
 		} catch (Exception e) {
-			System.out.println("O botão Select está provavelmente desabilitado porquê está pesquisando no projeto já selecionado anteriormente. Então clico no botão Cancel para o modal sumir");
+			System.out.println("O botï¿½o Select estï¿½ provavelmente desabilitado porquï¿½ estï¿½ pesquisando no projeto jï¿½ selecionado anteriormente. Entï¿½o clico no botï¿½o Cancel para o modal sumir");
 		}
 	
 	}
@@ -1755,31 +1755,31 @@ public class AutomacaoMme {
     	//Passos iniciais para abrir pesquisa de contratos
     	passosIniciaisParaAbrirPesquisaDeContratos(driver, wait);
 		
-		// Expandindo a opção Accenture da árvores de opções
+		// Expandindo a opï¿½ï¿½o Accenture da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção 5. LATAM da árvores de opções
+		// Expandindo a opï¿½ï¿½o 5. LATAM da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
 		//*[@id="tree"]/ez-node/li/ul/ez-node[1]/li/ul/ez-node[13]/li/div[1]/div
 		Thread.sleep(3000);
 		
-		// Expandindo a opção BRASIL - Non OLGA da árvores de opções
+		// Expandindo a opï¿½ï¿½o BRASIL - Non OLGA da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
 		//*[@id="tree"]/ez-node/li/ul/ez-node[1]/li/ul/ez-node[10]/li/ul/ez-node[7]/li/div[1]/div
 		Thread.sleep(3000);
 
-		// Expandindo a opção Global Village Telecom da árvores de opções
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[17]/li/div/div"))).click();
+		// Expandindo a opï¿½ï¿½o Global Village Telecom da ï¿½rvores de opï¿½ï¿½es
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[18]/li/div/div"))).click();
 		//*[@id="tree"]/ez-node/li/ul/ez-node[1]/li/ul/ez-node[10]/li/ul/ez-node[7]/li/ul/ez-node[17]/li/div[1]/div
 		Thread.sleep(3000);
 
-		// Expandindo a opção GVT SW Factories da árvores de opções
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[17]/li/ul/ez-node[2]/li/div/div"))).click();
+		// Expandindo a opï¿½ï¿½o GVT SW Factories da ï¿½rvores de opï¿½ï¿½es
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[18]/li/ul/ez-node[2]/li/div/div"))).click();
 		Thread.sleep(3000);
 
-		// Clicando na opção 9940191116 SW Factories da árvores de opções
-		String id9940191116SwFactories = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[17]/li/ul/ez-node[2]/li/ul/ez-node/li/div[2]/span";
+		// Clicando na opï¿½ï¿½o 9940191116 SW Factories da ï¿½rvores de opï¿½ï¿½es
+		String id9940191116SwFactories = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[18]/li/ul/ez-node[2]/li/ul/ez-node/li/div[2]/span";
 		String contrato = "9940191116 SW Factories";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(id9940191116SwFactories))).click();
 		Thread.sleep(5000);
@@ -1796,19 +1796,19 @@ public class AutomacaoMme {
     	//Passos iniciais para abrir pesquisa de contratos
     	passosIniciaisParaAbrirPesquisaDeContratos(driver, wait);
 		
-		// Expandindo a opção Accenture da árvores de opções
+		// Expandindo a opï¿½ï¿½o Accenture da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção 5. LATAM da árvores de opções
+		// Expandindo a opï¿½ï¿½o 5. LATAM da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção BRASIL - Non OLGA da árvores de opções
+		// Expandindo a opï¿½ï¿½o BRASIL - Non OLGA da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Clicando na opção AM Faturamento da árvores de opções
+		// Clicando na opï¿½ï¿½o AM Faturamento da ï¿½rvores de opï¿½ï¿½es
 		String idAMFaturamento = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[8]/li/div/span";
 		String contrato = "AM Faturamento";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idAMFaturamento))).click();
@@ -1827,19 +1827,19 @@ public class AutomacaoMme {
     	//Passos iniciais para abrir pesquisa de contratos
     	passosIniciaisParaAbrirPesquisaDeContratos(driver, wait);
 		
-		// Expandindo a opção Accenture da árvores de opções
+		// Expandindo a opï¿½ï¿½o Accenture da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção 5. LATAM da árvores de opções
+		// Expandindo a opï¿½ï¿½o 5. LATAM da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção BRASIL - Non OLGA da árvores de opções
+		// Expandindo a opï¿½ï¿½o BRASIL - Non OLGA da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Clicando na opção B2C SFA - Salesforce da árvores de opções
+		// Clicando na opï¿½ï¿½o B2C SFA - Salesforce da ï¿½rvores de opï¿½ï¿½es
 		String idB2C_SFA_Salesforce = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[10]/li/div[2]/span";
 		String contrato = "B2C SFA - Salesforce";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idB2C_SFA_Salesforce))).click();
@@ -1858,20 +1858,20 @@ public class AutomacaoMme {
     	//Passos iniciais para abrir pesquisa de contratos
     	passosIniciaisParaAbrirPesquisaDeContratos(driver, wait);
 		
-		// Expandindo a opção Accenture da árvores de opções
+		// Expandindo a opï¿½ï¿½o Accenture da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção 5. LATAM da árvores de opções
+		// Expandindo a opï¿½ï¿½o 5. LATAM da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção BRASIL - Non OLGA da árvores de opções
+		// Expandindo a opï¿½ï¿½o BRASIL - Non OLGA da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Clicando na opção Callidus da árvores de opções
-		String idCallidus = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[11]/li/div[2]/span";
+		// Clicando na opï¿½ï¿½o Callidus da ï¿½rvores de opï¿½ï¿½es
+		String idCallidus = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[12]/li/div[2]/span";
 		String contrato = "Callidus";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idCallidus))).click();
 		Thread.sleep(5000);
@@ -1889,23 +1889,23 @@ public class AutomacaoMme {
     	//Passos iniciais para abrir pesquisa de contratos
     	passosIniciaisParaAbrirPesquisaDeContratos(driver, wait);
 		
-		// Expandindo a opção Accenture da árvores de opções
+		// Expandindo a opï¿½ï¿½o Accenture da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção 5. LATAM da árvores de opções
+		// Expandindo a opï¿½ï¿½o 5. LATAM da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção BRASIL - Non OLGA da árvores de opções
+		// Expandindo a opï¿½ï¿½o BRASIL - Non OLGA da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção Global Village Telecom da árvores de opções
+		// Expandindo a opï¿½ï¿½o Global Village Telecom da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[15]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Clicando na opção GVT Proforma da árvores de opções
+		// Clicando na opï¿½ï¿½o GVT Proforma da ï¿½rvores de opï¿½ï¿½es
 		String idGVTProforma = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[7]/li/ul/ez-node[15]/li/ul/ez-node/li/div[2]/span";
 		String contrato = "GVT Proforma";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idGVTProforma))).click();
@@ -1924,27 +1924,27 @@ public class AutomacaoMme {
     	//Passos iniciais para abrir pesquisa de contratos
     	passosIniciaisParaAbrirPesquisaDeContratos(driver, wait);
 		
-		// Expandindo a opção Accenture da árvores de opções
+		// Expandindo a opï¿½ï¿½o Accenture da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção 5. LATAM da árvores de opções
+		// Expandindo a opï¿½ï¿½o 5. LATAM da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção BRASIL - Non OLGA da árvores de opções
+		// Expandindo a opï¿½ï¿½o BRASIL - Non OLGA da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção Hybris - eCommerce da árvores de opções
+		// Expandindo a opï¿½ï¿½o Hybris - eCommerce da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[13]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção SCO - Ecommerce da árvores de opções
+		// Expandindo a opï¿½ï¿½o SCO - Ecommerce da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[7]/li/ul/ez-node[12]/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Clicando na opção Hybris - eCommerce da árvores de opções
+		// Clicando na opï¿½ï¿½o Hybris - eCommerce da ï¿½rvores de opï¿½ï¿½es
 		String idHybris_eCommerce = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[7]/li/ul/ez-node[12]/li/ul/ez-node/li/ul/ez-node/li/div/span";
 		String contrato = "Hybris - eCommerce";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idHybris_eCommerce))).click();
@@ -1963,24 +1963,24 @@ public class AutomacaoMme {
     	//Passos iniciais para abrir pesquisa de contratos
     	passosIniciaisParaAbrirPesquisaDeContratos(driver, wait);
 		
-		// Expandindo a opção Accenture da árvores de opções
+		// Expandindo a opï¿½ï¿½o Accenture da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção 5. LATAM da árvores de opções
+		// Expandindo a opï¿½ï¿½o 5. LATAM da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção BRASIL - Non OLGA da árvores de opções
+		// Expandindo a opï¿½ï¿½o BRASIL - Non OLGA da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção Telefônica - XBD Digital Factory da árvores de opções
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[27]/li/div/div"))).click();
+		// Expandindo a opï¿½ï¿½o Telefï¿½nica - XBD Digital Factory da ï¿½rvores de opï¿½ï¿½es
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[28]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Clicando na opção Digital Factory da árvores de opções
-		String idDigitalFactory = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[27]/li/ul/ez-node/li/div[2]/span";
+		// Clicando na opï¿½ï¿½o Digital Factory da ï¿½rvores de opï¿½ï¿½es
+		String idDigitalFactory = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[28]/li/ul/ez-node/li/div[2]/span";
 		String contrato = "Digital Factory";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idDigitalFactory))).click();
 		Thread.sleep(5000);
@@ -1998,23 +1998,23 @@ public class AutomacaoMme {
     	//Passos iniciais para abrir pesquisa de contratos
     	passosIniciaisParaAbrirPesquisaDeContratos(driver, wait);
 		
-		// Expandindo a opção Accenture da árvores de opções
+		// Expandindo a opï¿½ï¿½o Accenture da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção 5. LATAM da árvores de opções
+		// Expandindo a opï¿½ï¿½o 5. LATAM da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção APOLLO LATAM da árvores de opções
+		// Expandindo a opï¿½ï¿½o APOLLO LATAM da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção AM LATAM - Master Contract 9940089177 da árvores de opções
+		// Expandindo a opï¿½ï¿½o AM LATAM - Master Contract 9940089177 da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[8]/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Clicando na opção AM Latam Brasil Fija - Contrato Local da árvores de opções
+		// Clicando na opï¿½ï¿½o AM Latam Brasil Fija - Contrato Local da ï¿½rvores de opï¿½ï¿½es
 		String idAmLatamBrasilFija = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[8]/li/ul/ez-node/li/ul/ez-node[4]/li/div[2]/span";
 		String contrato = "AM Latam Brasil Fija - Contrato Local";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idAmLatamBrasilFija))).click();
@@ -2033,20 +2033,20 @@ public class AutomacaoMme {
     	//Passos iniciais para abrir pesquisa de contratos
     	passosIniciaisParaAbrirPesquisaDeContratos(driver, wait);
 		
-		// Expandindo a opção Accenture da árvores de opções
+		// Expandindo a opï¿½ï¿½o Accenture da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção 5. LATAM da árvores de opções
+		// Expandindo a opï¿½ï¿½o 5. LATAM da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção BRASIL - Non OLGA da árvores de opções
+		// Expandindo a opï¿½ï¿½o BRASIL - Non OLGA da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Clicando na opção Nova Fabrica Design da árvores de opções
-		String idNovaFabricaDesign = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[19]/li/div[2]/span";
+		// Clicando na opï¿½ï¿½o Nova Fabrica Design da ï¿½rvores de opï¿½ï¿½es
+		String idNovaFabricaDesign = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[20]/li/div[2]/span";
 		String contrato = "Nova Fabrica Design";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idNovaFabricaDesign))).click();
 		Thread.sleep(5000);
@@ -2064,20 +2064,20 @@ public class AutomacaoMme {
     	//Passos iniciais para abrir pesquisa de contratos
     	passosIniciaisParaAbrirPesquisaDeContratos(driver, wait);
 		
-		// Expandindo a opção Accenture da árvores de opções
+		// Expandindo a opï¿½ï¿½o Accenture da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção 5. LATAM da árvores de opções
+		// Expandindo a opï¿½ï¿½o 5. LATAM da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção BRASIL - Non OLGA da árvores de opções
+		// Expandindo a opï¿½ï¿½o BRASIL - Non OLGA da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Clicando na opção Desligue Do Atis da árvores de opções
-		String idDesligueDoAtis = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[13]/li/div[2]/span";
+		// Clicando na opï¿½ï¿½o Desligue Do Atis da ï¿½rvores de opï¿½ï¿½es
+		String idDesligueDoAtis = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[14]/li/div[2]/span";
 		String contrato = "Desligue Do Atis";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idDesligueDoAtis))).click();
 		Thread.sleep(5000);
@@ -2094,20 +2094,20 @@ public class AutomacaoMme {
     	//Passos iniciais para abrir pesquisa de contratos
     	passosIniciaisParaAbrirPesquisaDeContratos(driver, wait);
 		
-		// Expandindo a opção Accenture da árvores de opções
+		// Expandindo a opï¿½ï¿½o Accenture da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção 5. LATAM da árvores de opções
+		// Expandindo a opï¿½ï¿½o 5. LATAM da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção BRASIL - Non OLGA da árvores de opções
+		// Expandindo a opï¿½ï¿½o BRASIL - Non OLGA da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Clicando na opção Portal Terra da árvores de opções
-		String idPortalTerra = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[20]/li/div[2]/span";
+		// Clicando na opï¿½ï¿½o Portal Terra da ï¿½rvores de opï¿½ï¿½es
+		String idPortalTerra = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[21]/li/div[2]/span";
 		String contrato = "Portal Terra";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idPortalTerra))).click();
 		Thread.sleep(5000);
@@ -2124,20 +2124,20 @@ public class AutomacaoMme {
     	//Passos iniciais para abrir pesquisa de contratos
     	passosIniciaisParaAbrirPesquisaDeContratos(driver, wait);
 		
-		// Expandindo a opção Accenture da árvores de opções
+		// Expandindo a opï¿½ï¿½o Accenture da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção 5. LATAM da árvores de opções
+		// Expandindo a opï¿½ï¿½o 5. LATAM da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção BRASIL - Non OLGA da árvores de opções
+		// Expandindo a opï¿½ï¿½o BRASIL - Non OLGA da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Clicando na opção Sustentacao VIVO GO da árvores de opções
-		String idSustentacaoVIVOGO = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[26]/li/div/span";
+		// Clicando na opï¿½ï¿½o Sustentacao VIVO GO da ï¿½rvores de opï¿½ï¿½es
+		String idSustentacaoVIVOGO = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[27]/li/div/span";
 		String contrato = "Sustentacao VIVO GO";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idSustentacaoVIVOGO))).click();
 		Thread.sleep(5000);
@@ -2155,20 +2155,20 @@ public class AutomacaoMme {
     	//Passos iniciais para abrir pesquisa de contratos
     	passosIniciaisParaAbrirPesquisaDeContratos(driver, wait);
 		
-		// Expandindo a opção Accenture da árvores de opções
+		// Expandindo a opï¿½ï¿½o Accenture da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção 5. LATAM da árvores de opções
+		// Expandindo a opï¿½ï¿½o 5. LATAM da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção BRASIL - Non OLGA da árvores de opções
+		// Expandindo a opï¿½ï¿½o BRASIL - Non OLGA da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Clicando na opção FiberCo Imp. Arquitet.BSS/OSS da árvores de opções
-		String idFiberCo = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[14]/li/div[2]/span";
+		// Clicando na opï¿½ï¿½o FiberCo Imp. Arquitet.BSS/OSS da ï¿½rvores de opï¿½ï¿½es
+		String idFiberCo = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[15]/li/div[2]/span";
 		String contrato = "FiberCo Imp. Arquitet.BSS/OSS";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idFiberCo))).click();
 		Thread.sleep(5000);
@@ -2186,20 +2186,20 @@ public class AutomacaoMme {
     	//Passos iniciais para abrir pesquisa de contratos
     	passosIniciaisParaAbrirPesquisaDeContratos(driver, wait);
 		
-		// Expandindo a opção Accenture da árvores de opções
+		// Expandindo a opï¿½ï¿½o Accenture da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção 5. LATAM da árvores de opções
+		// Expandindo a opï¿½ï¿½o 5. LATAM da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção BRASIL - Non OLGA da árvores de opções
+		// Expandindo a opï¿½ï¿½o BRASIL - Non OLGA da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Clicando na opção RPA - Blue Prism da árvores de opções
-		String idRpaBluePrism = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[22]/li/div[2]/span";
+		// Clicando na opï¿½ï¿½o RPA - Blue Prism da ï¿½rvores de opï¿½ï¿½es
+		String idRpaBluePrism = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[23]/li/div[2]/span";
 		String contrato = "RPA - Blue Prism";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idRpaBluePrism))).click();
 		Thread.sleep(5000);
@@ -2217,21 +2217,21 @@ public class AutomacaoMme {
     	//Passos iniciais para abrir pesquisa de contratos
     	passosIniciaisParaAbrirPesquisaDeContratos(driver, wait);
 		
-		// Expandindo a opção Accenture da árvores de opções
+		// Expandindo a opï¿½ï¿½o Accenture da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção 5. LATAM da árvores de opções
+		// Expandindo a opï¿½ï¿½o 5. LATAM da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção BRASIL - Non OLGA da árvores de opções
+		// Expandindo a opï¿½ï¿½o BRASIL - Non OLGA da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Clicando na opção Proteção de dados da árvores de opções
-		String idProtecaoDeDados = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[21]/li/div[2]/span";
-		String contrato = "Proteção de dados";
+		// Clicando na opï¿½ï¿½o Proteï¿½ï¿½o de dados da ï¿½rvores de opï¿½ï¿½es
+		String idProtecaoDeDados = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[22]/li/div[2]/span";
+		String contrato = "Proteï¿½ï¿½o de dados";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idProtecaoDeDados))).click();
 		Thread.sleep(5000);
 		passosFinaisPesquisaDeContratos(driver, wait);
@@ -2247,20 +2247,20 @@ public class AutomacaoMme {
     	//Passos iniciais para abrir pesquisa de contratos
     	passosIniciaisParaAbrirPesquisaDeContratos(driver, wait);
 		
-		// Expandindo a opção Accenture da árvores de opções
+		// Expandindo a opï¿½ï¿½o Accenture da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção 5. LATAM da árvores de opções
+		// Expandindo a opï¿½ï¿½o 5. LATAM da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Expandindo a opção BRASIL - Non OLGA da árvores de opções
+		// Expandindo a opï¿½ï¿½o BRASIL - Non OLGA da ï¿½rvores de opï¿½ï¿½es
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
-		// Clicando na opção B2B Transformation da árvores de opções
-		String id_B2B_Transformation = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[9]/li/div[2]/span";
+		// Clicando na opï¿½ï¿½o B2B Transformation da ï¿½rvores de opï¿½ï¿½es
+		String id_B2B_Transformation = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[10]/li/div[2]/span";
 		String contrato = "B2B Transformation";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(id_B2B_Transformation))).click();
 		Thread.sleep(5000);
@@ -2298,11 +2298,11 @@ public class AutomacaoMme {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='ctl00_ctl00_c_dc_ImgBtnTree']"))).click();
 		Thread.sleep(2000);
 		
-		// Abrindo a opção Forecast Analysis 
+		// Abrindo a opï¿½ï¿½o Forecast Analysis 
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Forecast Analysis')]"))).click();
 		Thread.sleep(2000);	
 		
-		// Abrindo a opção Multi-Segment Contract Report 
+		// Abrindo a opï¿½ï¿½o Multi-Segment Contract Report 
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Multi-Segment Contract Report')]"))).click();
 		Thread.sleep(5000);
 			
@@ -2352,8 +2352,8 @@ public class AutomacaoMme {
 		
 		escolheDataCalendarioEExportaPlanilhaMultiSegmentContractReport(driver, wait, mes, ano);
 		
-		// Movo todos os arquivos baixados para o diretório corrente de relatórios
-		// Também lê os relatórios baixados e armazena todas as linhas das planilhas na listaRelatorio
+		// Movo todos os arquivos baixados para o diretï¿½rio corrente de relatï¿½rios
+		// Tambï¿½m lï¿½ os relatï¿½rios baixados e armazena todas as linhas das planilhas na listaRelatorio
 		listaEMovePlanilhasMultiSegmentContractReport(Util.getValor("caminho.download.relatorios"), subdiretorioRelatoriosBaixados, contrato);
 		
 	}
@@ -2364,11 +2364,11 @@ public class AutomacaoMme {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='ctl00_ctl00_c_dc_ImgBtnTree']"))).click();
 		Thread.sleep(2000);
 		
-		// Abrindo a opção Resource Planning and Management 
+		// Abrindo a opï¿½ï¿½o Resource Planning and Management 
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Resource Planning and Management')]"))).click();
 		Thread.sleep(2000);	
 		
-		// Abrindo a opção Resource Trend 
+		// Abrindo a opï¿½ï¿½o Resource Trend 
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Resource Trend')]"))).click();
 		Thread.sleep(5000);
 			
@@ -2407,11 +2407,11 @@ public class AutomacaoMme {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='ctl00_ctl00_c_dc_ImgBtnTree']"))).click();
 		Thread.sleep(2000);
 		
-		// Abrindo a opção Resource Planning and Management 
+		// Abrindo a opï¿½ï¿½o Resource Planning and Management 
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Resource Planning and Management')]"))).click();
 		Thread.sleep(2000);	
 		
-		// Abrindo a opção Resource Trend 
+		// Abrindo a opï¿½ï¿½o Resource Trend 
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Resource Trend')]"))).click();
 		Thread.sleep(5000);
 			
@@ -2452,8 +2452,8 @@ public class AutomacaoMme {
 			
 			escolheDataCalendarioEExportaPlanilhaResourceTrend(driver, wait, mes, ano);
 			
-			// Movo todos os arquivos baixados para o diretório corrente de relatórios
-			// Também lê os relatórios baixados e armazena todas as linhas das planilhas na listaRelatorio
+			// Movo todos os arquivos baixados para o diretï¿½rio corrente de relatï¿½rios
+			// Tambï¿½m lï¿½ os relatï¿½rios baixados e armazena todas as linhas das planilhas na listaRelatorio
 			listaEMovePlanilhasResourceTrend(Util.getValor("caminho.download.relatorios"), subdiretorioRelatoriosBaixados, contrato, ano, String.valueOf(mesMasterActive));
 
 		}
@@ -2464,7 +2464,7 @@ public class AutomacaoMme {
 		
 		Thread.sleep(10000);
 		
-		// Recupera o número do mês do relatório Resource Trend
+		// Recupera o nï¿½mero do mï¿½s do relatï¿½rio Resource Trend
 		//int mesMasterActiveResourceTrend = retornaNumeroMesMasterActiveResourceTrend(driver, wait);
 		//Thread.sleep(2000);
 		
@@ -2472,11 +2472,11 @@ public class AutomacaoMme {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='ctl00_ctl00_c_dc_ImgBtnTree']"))).click();
 		Thread.sleep(2000);
 		
-		// Abrindo a opção Cost Planning and Management 
+		// Abrindo a opï¿½ï¿½o Cost Planning and Management 
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Cost Planning and Management')]"))).click();
 		Thread.sleep(2000);
 		
-		// Abrindo a opção Cost Transaction Extract(Everything Report) 
+		// Abrindo a opï¿½ï¿½o Cost Transaction Extract(Everything Report) 
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Cost Transaction Extract(Everything Report)')]"))).click();
 		Thread.sleep(5000);
 		
@@ -2486,10 +2486,10 @@ public class AutomacaoMme {
 		
 		} else {
 			
-			// Exportando a planilha com o mês atual
+			// Exportando a planilha com o mï¿½s atual
 			escolheDataCalendarioEExportaPlanilhaCostTransactionExtract(driver, wait, contrato, mesAtual, anoAtual);
 			
-			// Exportando a planilha com o mês anterior
+			// Exportando a planilha com o mï¿½s anterior
 			escolheDataCalendarioEExportaPlanilhaCostTransactionExtract(driver, wait, contrato, mesAnterior, anoCorreto);
 
 		}
@@ -2509,9 +2509,9 @@ public class AutomacaoMme {
 				// Todos os meses
 				for (int mes = 1; mes <=12; mes++) {
 					
-					// Existem alguns meses de alguns anos de alguns contratos que dão erro na hora de extrair do Mme
-					// Então os ignoro
-					// Também ignoro alguns anos que não existem para alguns contratos
+					// Existem alguns meses de alguns anos de alguns contratos que dï¿½o erro na hora de extrair do Mme
+					// Entï¿½o os ignoro
+					// Tambï¿½m ignoro alguns anos que nï¿½o existem para alguns contratos
 					boolean excecao = excecoesExtracaoRelatorios(contrato, mes, Integer.parseInt(ano));
 					
 					if (excecao) {
@@ -2591,7 +2591,7 @@ public class AutomacaoMme {
     		
     		contadorErrosCalendario ++;
 			
-            // Tento escolher clicar no calendário por 20 vezes
+            // Tento escolher clicar no calendï¿½rio por 20 vezes
             if (contadorErrosCalendario <= 20) {
             	
             	System.out.println("Erro ao clicar no calendario.Tentativa de numero: " + contadorErrosCalendario);
@@ -2613,7 +2613,7 @@ public class AutomacaoMme {
 		
 		rolagemParaBaixo(driver);
 		
-		// Clicando no calendário
+		// Clicando no calendï¿½rio
 		clickNoCalendarioCostTransactionExtract(driver, wait);
 		
 		// Ano
@@ -2633,7 +2633,7 @@ public class AutomacaoMme {
 		}
 		Thread.sleep(1000);
 		
-		// Mês
+		// Mï¿½s
 		String idComboMes = "//div[@id='ui-datepicker-div']/div/div/select";
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(idComboMes)));
 		WebElement comboMes = driver.findElement(By.xpath(idComboMes));
@@ -2656,17 +2656,17 @@ public class AutomacaoMme {
 		}
 		Thread.sleep(1000);
 		
-		// Clicando no botão Fechar do calendário
+		// Clicando no botï¿½o Fechar do calendï¿½rio
 		botaoFecharCalendario(wait);
 		
 		String periodo = "Actual";
 		
 		if (encontrouAno && encontrouMes) {
 			
-			// Mês e ano atual
+			// Mï¿½s e ano atual
 			if (mes == mesAtual && ano == anoAtual) {
 			
-				// Mês ainda não está fechado
+				// Mï¿½s ainda nï¿½o estï¿½ fechado
 				periodo = "Forecast";
 			
 			} else if (mes == mesAnterior && ano == anoCorreto) {
@@ -2674,9 +2674,9 @@ public class AutomacaoMme {
 				Calendar cal = Calendar.getInstance();
 				cal.setTime(new Date());
 						 
-				// Se o mês a ser extraído for o anterior e se o dia atual for menor ao 8º dia útil do mês atual,
-				// então a extração do mês anterior ainda não já fechou, logo é Forecast
-				// Não estou considerando os dias úteis, somente o dia do mês mesmo
+				// Se o mï¿½s a ser extraï¿½do for o anterior e se o dia atual for menor ao 8ï¿½ dia ï¿½til do mï¿½s atual,
+				// entï¿½o a extraï¿½ï¿½o do mï¿½s anterior ainda nï¿½o jï¿½ fechou, logo ï¿½ Forecast
+				// Nï¿½o estou considerando os dias ï¿½teis, somente o dia do mï¿½s mesmo
 				if (cal.get(Calendar.DAY_OF_MONTH) < 8 ) { // dia menor que o dia 8
 					
 					periodo = "Forecast";	
@@ -2689,12 +2689,12 @@ public class AutomacaoMme {
 				
 			}
 
-			// Clicando no botão Export
+			// Clicando no botï¿½o Export
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='ctl00_ctl00_c_dc_btnRunReport']"))).click();
 			Thread.sleep(Integer.parseInt(Util.getValor("tempo.segundos.download.planilha")) * 1000);
 			
-			// Movo todos os arquivos baixados para o diretório corrente de relatórios
-			// Também lê os relatórios baixados e armazena todas as linhas das planilhas na listaRelatorio
+			// Movo todos os arquivos baixados para o diretï¿½rio corrente de relatï¿½rios
+			// Tambï¿½m lï¿½ os relatï¿½rios baixados e armazena todas as linhas das planilhas na listaRelatorio
 			listaEMovePlanilhasCostTransactionExtract(Util.getValor("caminho.download.relatorios"), subdiretorioRelatoriosBaixados, contrato, mes, ano, periodo);
 			
 		}
@@ -2703,7 +2703,7 @@ public class AutomacaoMme {
 	
 	 public static void botaoFecharCalendario (WebDriverWait wait) throws Exception {
 		 
-		// Clicando no botão Fechar do calendário
+		// Clicando no botï¿½o Fechar do calendï¿½rio
 		 if (Util.getValor("termos.em.ingles").equals("S")) {
 			 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(.,'Done')]"))).click();
 		 } else {
@@ -2717,7 +2717,7 @@ public class AutomacaoMme {
     	
     	boolean encontrouAno_E_EncontrouMes = false;
     	
-    	// Clicando no calendário com label To
+    	// Clicando no calendï¿½rio com label To
     	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='ctl00_ctl00_c_dc_cntlTimeFrameControl_tf_Time_To_cal_dateBox']"))).click();
     	Thread.sleep(2000);
     	
@@ -2738,7 +2738,7 @@ public class AutomacaoMme {
 		}
 		Thread.sleep(1000);
 		
-		// Mês
+		// Mï¿½s
 		String idComboMes = "//div[@id='ui-datepicker-div']/div/div/select";
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(idComboMes)));
 		WebElement comboMes = driver.findElement(By.xpath(idComboMes));
@@ -2755,7 +2755,7 @@ public class AutomacaoMme {
 		}
 		Thread.sleep(1000);
 
-		// Clicando no botão Fechar do calendário
+		// Clicando no botï¿½o Fechar do calendï¿½rio
 		botaoFecharCalendario(wait);		
 		
 		if (encontrouAno && encontrouMes) {
@@ -2770,7 +2770,7 @@ public class AutomacaoMme {
     	
     	boolean encontrouAno_E_EncontrouMes = false;
     	
-    	// Clicando no calendário com label From
+    	// Clicando no calendï¿½rio com label From
     	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='ctl00_ctl00_c_dc_cntlTimeFrameControl_tf_Time_From_cal_dateBox']"))).click();
     	Thread.sleep(2000);
     	
@@ -2791,7 +2791,7 @@ public class AutomacaoMme {
 		}
 		Thread.sleep(1000);
 		
-		// Mês
+		// Mï¿½s
 		String idComboMes = "//div[@id='ui-datepicker-div']/div/div/select";
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(idComboMes)));
 		WebElement comboMes = driver.findElement(By.xpath(idComboMes));
@@ -2808,7 +2808,7 @@ public class AutomacaoMme {
 		}
 		Thread.sleep(1000);
 
-		// Clicando no botão Fechar do calendário
+		// Clicando no botï¿½o Fechar do calendï¿½rio
 		botaoFecharCalendario(wait);		
 		
 		if (encontrouAno && encontrouMes) {
@@ -2827,14 +2827,14 @@ public class AutomacaoMme {
 		
 		rolagemParaBaixo(driver);
 		
-		// Calendário do label To
+		// Calendï¿½rio do label To
 		boolean encontrouMesAnoCalendarioResourceTrendTo = calendarioResourceTrendTo(driver, wait, mes, ano);
 		
-		// Calendário do label From
+		// Calendï¿½rio do label From
 		boolean encontrouMesAnoCalendarioResourceTrendFrom = calendarioResourceTrendFrom(driver, wait, mes, ano);
 		
 		if (encontrouMesAnoCalendarioResourceTrendTo && encontrouMesAnoCalendarioResourceTrendFrom) {
-			// Clicando no botão Export
+			// Clicando no botï¿½o Export
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='ctl00_ctl00_c_dc_btnRunReport']"))).click();
 			Thread.sleep(Integer.parseInt(Util.getValor("tempo.segundos.download.planilha")) * 1000);
 		}
@@ -2845,7 +2845,7 @@ public class AutomacaoMme {
     	
     	boolean encontrouAno_E_EncontrouMes = false;
     	
-    	// Clicando no calendário com label To
+    	// Clicando no calendï¿½rio com label To
     	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='ctl00_ctl00_c_dc_cntlTimeFrameControl_tf_Time_To_cal_dateBox']"))).click();
     	Thread.sleep(2000);
     	
@@ -2866,7 +2866,7 @@ public class AutomacaoMme {
 		}
 		Thread.sleep(1000);
 		
-		// Mês
+		// Mï¿½s
 		String idComboMes = "//div[@id='ui-datepicker-div']/div/div/select";
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(idComboMes)));
 		WebElement comboMes = driver.findElement(By.xpath(idComboMes));
@@ -2883,7 +2883,7 @@ public class AutomacaoMme {
 		}
 		Thread.sleep(1000);
 
-		// Clicando no botão Fechar do calendário
+		// Clicando no botï¿½o Fechar do calendï¿½rio
 		botaoFecharCalendario(wait);		
 		
 		if (encontrouAno && encontrouMes) {
@@ -2898,7 +2898,7 @@ public class AutomacaoMme {
     	
     	boolean encontrouAno_E_EncontrouMes = false;
     	
-    	// Clicando no calendário com label From
+    	// Clicando no calendï¿½rio com label From
     	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='ctl00_ctl00_c_dc_cntlTimeFrameControl_tf_Time_From_cal_dateBox']"))).click();
     	Thread.sleep(2000);
     	
@@ -2919,7 +2919,7 @@ public class AutomacaoMme {
 		}
 		Thread.sleep(1000);
 		
-		// Mês
+		// Mï¿½s
 		String idComboMes = "//div[@id='ui-datepicker-div']/div/div/select";
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(idComboMes)));
 		WebElement comboMes = driver.findElement(By.xpath(idComboMes));
@@ -2936,7 +2936,7 @@ public class AutomacaoMme {
 		}
 		Thread.sleep(1000);
 
-		// Clicando no botão Fechar do calendário
+		// Clicando no botï¿½o Fechar do calendï¿½rio
 		botaoFecharCalendario(wait);		
 		
 		if (encontrouAno && encontrouMes) {
@@ -2955,17 +2955,17 @@ public class AutomacaoMme {
 		
 		rolagemParaBaixo(driver);
 		
-		// Calendário do label From
+		// Calendï¿½rio do label From
 		boolean encontrouMesAnoCalendarioMultiSegmentContractReportFrom = calendarioMultiSegmentContractReportFrom(driver, wait, mes, ano);
 
-		// Calendário do label To
-		// Nova regra para os relatórios Multi Segment Contract Report
-		// Iremos extrair no campo "To" três anos para frente
+		// Calendï¿½rio do label To
+		// Nova regra para os relatï¿½rios Multi Segment Contract Report
+		// Iremos extrair no campo "To" trï¿½s anos para frente
 		int anoInteiro = Integer.parseInt(ano) + 3;
 		boolean encontrouMesAnoCalendarioMultiSegmentContractReportTo = calendarioMultiSegmentContractReportTo(driver, wait, mes, String.valueOf(anoInteiro));
 		
 		if (encontrouMesAnoCalendarioMultiSegmentContractReportTo && encontrouMesAnoCalendarioMultiSegmentContractReportFrom) {
-			// Clicando no botão Export
+			// Clicando no botï¿½o Export
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='ctl00_ctl00_c_dc_btnRunReport']"))).click();
 			Thread.sleep(Integer.parseInt(Util.getValor("tempo.segundos.download.planilha")) * 1000);
 		}
@@ -3265,7 +3265,7 @@ public class AutomacaoMme {
 	   		criaDiretorio(caminhoTemp);
 		    		
 	   	} catch (Exception e) {
-	   		System.out.println("Deu erro na criação do diretório Temp: " + e.getMessage());
+	   		System.out.println("Deu erro na criaï¿½ï¿½o do diretï¿½rio Temp: " + e.getMessage());
 	   	}
 
 	}
@@ -3292,18 +3292,18 @@ public class AutomacaoMme {
 				    chromePreferences.put("browser.helperApps.neverAsk.saveToDisk", "text/plain, application/vnd.ms-excel, text/csv, text/comma-separated-values, application/octet-stream");
 				    chromeOptions.setExperimentalOption("prefs", chromePreferences);
 				    
-				    // Argumento que faz com que o navegador use os dados do usuário salvos
-				    // Com isso não será necessário digitar os dados de login no sharepoint, pois ele pegará as informações do usuário salvas na máquina
-				    // Um ponto importante é que não poderemos ter mais de uma sessão do Chrome aberta
-				    // Outro ponto importante é que a opção acima browser.helperApps.neverAsk.saveToDisk que permite que o browser salve um arquivo sem perguntar aonde salvar,
-				    // não funcionará por conta do trecho abaixo.
-				    // Neste caso deveremos setar manualmente essa opção no Chrome antes de rodar o robô
-				    // Será necessário fazer aparecer essa pasta no explorer do usuário
+				    // Argumento que faz com que o navegador use os dados do usuï¿½rio salvos
+				    // Com isso nï¿½o serï¿½ necessï¿½rio digitar os dados de login no sharepoint, pois ele pegarï¿½ as informaï¿½ï¿½es do usuï¿½rio salvas na mï¿½quina
+				    // Um ponto importante ï¿½ que nï¿½o poderemos ter mais de uma sessï¿½o do Chrome aberta
+				    // Outro ponto importante ï¿½ que a opï¿½ï¿½o acima browser.helperApps.neverAsk.saveToDisk que permite que o browser salve um arquivo sem perguntar aonde salvar,
+				    // nï¿½o funcionarï¿½ por conta do trecho abaixo.
+				    // Neste caso deveremos setar manualmente essa opï¿½ï¿½o no Chrome antes de rodar o robï¿½
+				    // Serï¿½ necessï¿½rio fazer aparecer essa pasta no explorer do usuï¿½rio
 				    chromeOptions.addArguments("user-data-dir=" + Util.getValor("caminho.dados.usuario.Chrome"));
 				    chromeOptions.addArguments("--lang=pt");
 				    //chromeOptions.addArguments("--start-fullscreen");
 				    driver = new ChromeDriver(chromeOptions);
-				    // Limpa o cache usando método do driver
+				    // Limpa o cache usando mï¿½todo do driver
 				    driver.manage().deleteAllCookies();
 				
 				} else if ("internetExplorer".equals(Util.getValor("navegador"))) {
@@ -3329,7 +3329,7 @@ public class AutomacaoMme {
 					//driver = new InternetExplorerDriver(caps);
 					//driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 					driver = new InternetExplorerDriver(ieOptions);
-				    // Limpa o cache usando método do driver
+				    // Limpa o cache usando mï¿½todo do driver
 				    driver.manage().deleteAllCookies();
 				
 				} else if ("Firefox".equals(Util.getValor("navegador"))) {
@@ -3354,7 +3354,7 @@ public class AutomacaoMme {
 				    FirefoxOptions fxOptions = new FirefoxOptions();
 				    fxOptions.setProfile(fxProfile);
 				    driver = new FirefoxDriver(fxOptions);
-				    // Limpa o cache usando método do driver
+				    // Limpa o cache usando mï¿½todo do driver
 				    driver.manage().deleteAllCookies();
 				}
 			
@@ -3394,9 +3394,9 @@ public class AutomacaoMme {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 		writer.write(mensagem + conteudoArquivo);
 		writer.newLine();
-		//Criando o conteúdo do arquivo
+		//Criando o conteï¿½do do arquivo
 		writer.flush();
-		//Fechando conexão e escrita do arquivo.
+		//Fechando conexï¿½o e escrita do arquivo.
 		writer.close();
 		
     }
