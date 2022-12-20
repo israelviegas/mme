@@ -24,11 +24,10 @@ public class Util {
     public static Properties getProp() throws IOException {
         Properties props = new Properties();
         
-        // String arquivoProperties = "D:/JOBS/AutomacaoMme/configuracoes/propriedadesMme.properties";  
+       // String arquivoProperties = "D:/JOBS/AutomacaoMme/configuracoes/propriedadesMme.properties";  
         // String arquivoProperties = "D:/JOBS/Mme/configuracoes/gerar relatorio pedidos.properties"; 
         // String arquivoProperties = "C:/AutomacaoMme/configuracoes/propriedadesMme.properties"; 
-        // Quando a integração do Sharepoint estiver pronta, usar o arquivo propriedadesAdquira com Sharepoint.properties
-         String arquivoProperties = "C:/Viegas/desenvolvimento/Selenium/arquivos propriedades/propriedadesMme.properties";
+         String arquivoProperties = "C:/Viegas/desenvolvimento/Selenium/Mme/configuracoes/propriedadesMme.properties";
        // String arquivoProperties = "C:/Users/d.paschoaloni.jaques/OneDrive - Avanade/10 - AutomacaoMme/AutomacaoMme/configuracoes/propriedadesMme.properties";
 
         FileInputStream file = new FileInputStream(arquivoProperties);

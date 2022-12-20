@@ -287,12 +287,12 @@ public class AutomacaoMme {
     			
     			for (String nomeContrato : listaNomesDeContratosDistintos) {
     				
-    				// Apagando o m�s atual do contrato
+    				// Apagando o mes atual do contrato
     				MmeDao mmeDaoDeletarMesAtual = new MmeDao();
     				mmeDaoDeletarMesAtual.deletarRelatoriosCostTransactionExtract(mesAtual, anoAtual, nomeContrato);
     				System.out.println("Relatorio Cost Transaction Extract. Apaguei todos os dados do banco do m�s atual do contrato " + nomeContrato);
     				
-    				// Apagando o m�s anterior do contrato
+    				// Apagando o mes anterior do contrato
     				MmeDao mmeDaoDeletarMesAnterior = new MmeDao();
     				mmeDaoDeletarMesAnterior.deletarRelatoriosCostTransactionExtract(mesAnterior, anoCorreto, nomeContrato);
     				System.out.println("Relatorio Cost Transaction Extract. Apaguei todos os dados do banco do m�s anterior do contrato " + nomeContrato);
@@ -1716,6 +1716,16 @@ public class AutomacaoMme {
 		
 	}
 	
+	public static void advancedReportingMenuTeste(WebDriver driver, WebDriverWait wait) throws Exception {
+		
+		// Acessando o Advanced Reporting
+		driver.get(Util.getValor("url.advanced.reporting"));
+		Thread.sleep(2000);
+		
+		fecharPopUpMensagem(driver, wait);
+		
+	}
+	
 	public static void advancedReportingMenu(WebDriver driver, WebDriverWait wait) throws Exception {
 		
 		// Clicando no link Update Forecast
@@ -1726,8 +1736,43 @@ public class AutomacaoMme {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Advanced Reporting')]"))).click();
 		Thread.sleep(2000);
 		
+		// Obtendo a url do link do relatório clássico
+		String idRelatorioClassico = "//*[@id=\"reportingClassic\"]/a";
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(idRelatorioClassico)));
+		WebElement linkRelatorioClassico = driver.findElement(By.xpath(idRelatorioClassico));
+		String urlLinkRelatorioClassico = linkRelatorioClassico.getAttribute("href");
+		
+		// Acessando o Advanced Reporting
+		driver.get(urlLinkRelatorioClassico);
+		Thread.sleep(5000);
+				
 		fecharPopUpMensagem(driver, wait);
-	
+		
+		// Viegas
+		// Quantidade de iframes
+		//int size = driver.findElements(By.tagName("iframe")).size();
+		
+		// O relatório fica na parte de baixo da tela, que é um segundo frame
+		// Troco para esse segundo frame para manipular os campos
+		//WebDriver iframeMapa = driver.switchTo().frame(size - 1);
+		//WebDriverWait waitSegundoIframe = new WebDriverWait(iframeMapa, 20);
+		
+		//List<String> windowHandles = new ArrayList<>(driver.getWindowHandles());
+		//driver.switchTo().window(windowHandles.get(0));
+		
+		//((JavascriptExecutor) driver).executeScript("window.close()");
+		
+		// Clicando no link Update Forecast
+		//waitSegundoIframe.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(.,'Update Forecast')]"))).click();
+		
+		// Acessando o Advanced Reporting
+		//driver.get(Util.getValor("url.advanced.reporting"));
+		//Thread.sleep(2000);
+		
+		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='top-nav-breadcrumb-1']/div/div/button"))).click();
+		//Thread.sleep(2000);
+		// Viegas
+		
 	}
 	
 	public static void passosFinaisPesquisaDeContratos(WebDriver driver, WebDriverWait wait) throws Exception {
@@ -1760,26 +1805,26 @@ public class AutomacaoMme {
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o 5. LATAM da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/div/div"))).click();
 		//*[@id="tree"]/ez-node/li/ul/ez-node[1]/li/ul/ez-node[13]/li/div[1]/div
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o BRASIL - Non OLGA da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/div/div"))).click();
 		//*[@id="tree"]/ez-node/li/ul/ez-node[1]/li/ul/ez-node[10]/li/ul/ez-node[7]/li/div[1]/div
 		Thread.sleep(3000);
 
 		// Expandindo a op��o Global Village Telecom da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[18]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/ul/ez-node[20]/li/div/div"))).click();
 		//*[@id="tree"]/ez-node/li/ul/ez-node[1]/li/ul/ez-node[10]/li/ul/ez-node[7]/li/ul/ez-node[17]/li/div[1]/div
 		Thread.sleep(3000);
 
 		// Expandindo a op��o GVT SW Factories da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[18]/li/ul/ez-node[2]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/ul/ez-node[20]/li/ul/ez-node[2]/li/div/div"))).click();
 		Thread.sleep(3000);
 
 		// Clicando na op��o 9940191116 SW Factories da �rvores de op��es
-		String id9940191116SwFactories = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[18]/li/ul/ez-node[2]/li/ul/ez-node/li/div[2]/span";
+		String id9940191116SwFactories = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/ul/ez-node[20]/li/ul/ez-node[2]/li/ul/ez-node/li/div[2]/span";
 		String contrato = "9940191116 SW Factories";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(id9940191116SwFactories))).click();
 		Thread.sleep(5000);
@@ -1801,15 +1846,15 @@ public class AutomacaoMme {
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o 5. LATAM da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o BRASIL - Non OLGA da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Clicando na op��o AM Faturamento da �rvores de op��es
-		String idAMFaturamento = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[8]/li/div/span";
+		String idAMFaturamento = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/ul/ez-node[9]/li/div/span";
 		String contrato = "AM Faturamento";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idAMFaturamento))).click();
 		Thread.sleep(5000);
@@ -1832,15 +1877,14 @@ public class AutomacaoMme {
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o 5. LATAM da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o BRASIL - Non OLGA da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
-		
 		// Clicando na op��o B2C SFA - Salesforce da �rvores de op��es
-		String idB2C_SFA_Salesforce = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[10]/li/div[2]/span";
+		String idB2C_SFA_Salesforce = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/ul/ez-node[12]/li/div[2]/span";
 		String contrato = "B2C SFA - Salesforce";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idB2C_SFA_Salesforce))).click();
 		Thread.sleep(5000);
@@ -1863,19 +1907,18 @@ public class AutomacaoMme {
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o 5. LATAM da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o BRASIL - Non OLGA da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Clicando na op��o Callidus da �rvores de op��es
-		String idCallidus = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[12]/li/div[2]/span";
+		String idCallidus = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/ul/ez-node[13]/li/div[2]/span";
 		String contrato = "Callidus";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idCallidus))).click();
 		Thread.sleep(5000);
-
 		passosFinaisPesquisaDeContratos(driver, wait);
 		
 		listaNomesDeContratosDistintos.add(contrato);
@@ -1894,19 +1937,19 @@ public class AutomacaoMme {
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o 5. LATAM da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o BRASIL - Non OLGA da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o Global Village Telecom da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[15]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/ul/ez-node[20]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Clicando na op��o GVT Proforma da �rvores de op��es
-		String idGVTProforma = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[7]/li/ul/ez-node[15]/li/ul/ez-node/li/div[2]/span";
+		String idGVTProforma = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[7]/li/ul/ez-node[20]/li/ul/ez-node/li/div[2]/span";
 		String contrato = "GVT Proforma";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idGVTProforma))).click();
 		Thread.sleep(5000);
@@ -1929,23 +1972,23 @@ public class AutomacaoMme {
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o 5. LATAM da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o BRASIL - Non OLGA da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o Hybris - eCommerce da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[13]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/ul/ez-node[13]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o SCO - Ecommerce da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[7]/li/ul/ez-node[12]/li/ul/ez-node/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[7]/li/ul/ez-node[12]/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Clicando na op��o Hybris - eCommerce da �rvores de op��es
-		String idHybris_eCommerce = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[7]/li/ul/ez-node[12]/li/ul/ez-node/li/ul/ez-node/li/div/span";
+		String idHybris_eCommerce = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[7]/li/ul/ez-node[12]/li/ul/ez-node/li/ul/ez-node/li/div/span";
 		String contrato = "Hybris - eCommerce";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idHybris_eCommerce))).click();
 		Thread.sleep(5000);
@@ -1968,23 +2011,21 @@ public class AutomacaoMme {
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o 5. LATAM da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o BRASIL - Non OLGA da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
-		
 		// Expandindo a op��o Telef�nica - XBD Digital Factory da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[28]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/ul/ez-node[30]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Clicando na op��o Digital Factory da �rvores de op��es
-		String idDigitalFactory = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[28]/li/ul/ez-node/li/div[2]/span";
+		String idDigitalFactory = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/ul/ez-node[30]/li/ul/ez-node/li/div[2]/span";
 		String contrato = "Digital Factory";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idDigitalFactory))).click();
 		Thread.sleep(5000);
-
 		passosFinaisPesquisaDeContratos(driver, wait);
 		
 		listaNomesDeContratosDistintos.add(contrato);
@@ -2003,19 +2044,19 @@ public class AutomacaoMme {
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o 5. LATAM da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o APOLLO LATAM da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o AM LATAM - Master Contract 9940089177 da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[8]/li/ul/ez-node/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[8]/li/ul/ez-node/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Clicando na op��o AM Latam Brasil Fija - Contrato Local da �rvores de op��es
-		String idAmLatamBrasilFija = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[8]/li/ul/ez-node/li/ul/ez-node[4]/li/div[2]/span";
+		String idAmLatamBrasilFija = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[8]/li/ul/ez-node/li/ul/ez-node[4]/li/div[2]/span";
 		String contrato = "AM Latam Brasil Fija - Contrato Local";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idAmLatamBrasilFija))).click();
 		Thread.sleep(5000);
@@ -2038,15 +2079,15 @@ public class AutomacaoMme {
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o 5. LATAM da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o BRASIL - Non OLGA da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Clicando na op��o Nova Fabrica Design da �rvores de op��es
-		String idNovaFabricaDesign = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[20]/li/div[2]/span";
+		String idNovaFabricaDesign = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/ul/ez-node[22]/li/div[2]/span";
 		String contrato = "Nova Fabrica Design";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idNovaFabricaDesign))).click();
 		Thread.sleep(5000);
@@ -2069,15 +2110,14 @@ public class AutomacaoMme {
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o 5. LATAM da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o BRASIL - Non OLGA da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
-		
 		// Clicando na op��o Desligue Do Atis da �rvores de op��es
-		String idDesligueDoAtis = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[14]/li/div[2]/span";
+		String idDesligueDoAtis = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/ul/ez-node[16]/li/div[2]/span";
 		String contrato = "Desligue Do Atis";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idDesligueDoAtis))).click();
 		Thread.sleep(5000);
@@ -2099,20 +2139,19 @@ public class AutomacaoMme {
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o 5. LATAM da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o BRASIL - Non OLGA da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Clicando na op��o Portal Terra da �rvores de op��es
-		String idPortalTerra = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[21]/li/div[2]/span";
+		String idPortalTerra = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/ul/ez-node[23]/li/div[2]/span";
 		String contrato = "Portal Terra";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idPortalTerra))).click();
 		Thread.sleep(5000);
 		passosFinaisPesquisaDeContratos(driver, wait);
-		
 		listaNomesDeContratosDistintos.add(contrato);
 		
 		extracaoRelatorios(driver, wait, contrato);
@@ -2129,15 +2168,14 @@ public class AutomacaoMme {
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o 5. LATAM da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o BRASIL - Non OLGA da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
-		
 		// Clicando na op��o Sustentacao VIVO GO da �rvores de op��es
-		String idSustentacaoVIVOGO = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[27]/li/div/span";
+		String idSustentacaoVIVOGO = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/ul/ez-node[29]/li/div/span";
 		String contrato = "Sustentacao VIVO GO";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idSustentacaoVIVOGO))).click();
 		Thread.sleep(5000);
@@ -2160,19 +2198,18 @@ public class AutomacaoMme {
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o 5. LATAM da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o BRASIL - Non OLGA da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Clicando na op��o FiberCo Imp. Arquitet.BSS/OSS da �rvores de op��es
-		String idFiberCo = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[15]/li/div[2]/span";
+		String idFiberCo = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/ul/ez-node[17]/li/div[2]/span";
 		String contrato = "FiberCo Imp. Arquitet.BSS/OSS";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idFiberCo))).click();
 		Thread.sleep(5000);
-
 		passosFinaisPesquisaDeContratos(driver, wait);
 		
 		listaNomesDeContratosDistintos.add(contrato);
@@ -2191,15 +2228,14 @@ public class AutomacaoMme {
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o 5. LATAM da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o BRASIL - Non OLGA da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
-		
 		// Clicando na op��o RPA - Blue Prism da �rvores de op��es
-		String idRpaBluePrism = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[23]/li/div[2]/span";
+		String idRpaBluePrism = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/ul/ez-node[25]/li/div[2]/span";
 		String contrato = "RPA - Blue Prism";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idRpaBluePrism))).click();
 		Thread.sleep(5000);
@@ -2222,15 +2258,14 @@ public class AutomacaoMme {
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o 5. LATAM da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o BRASIL - Non OLGA da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
-		
 		// Clicando na op��o Prote��o de dados da �rvores de op��es
-		String idProtecaoDeDados = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[22]/li/div[2]/span";
+		String idProtecaoDeDados = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/ul/ez-node[24]/li/div[2]/span";
 		String contrato = "Prote��o de dados";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(idProtecaoDeDados))).click();
 		Thread.sleep(5000);
@@ -2252,15 +2287,15 @@ public class AutomacaoMme {
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o 5. LATAM da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Expandindo a op��o BRASIL - Non OLGA da �rvores de op��es
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/div/div"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/div/div"))).click();
 		Thread.sleep(3000);
 		
 		// Clicando na op��o B2B Transformation da �rvores de op��es
-		String id_B2B_Transformation = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[10]/li/ul/ez-node[6]/li/ul/ez-node[10]/li/div[2]/span";
+		String id_B2B_Transformation = "//ez-tree[@id='tree']/ez-node/li/ul/ez-node/li/ul/ez-node[11]/li/ul/ez-node[6]/li/ul/ez-node[11]/li/div[2]/span";
 		String contrato = "B2B Transformation";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(id_B2B_Transformation))).click();
 		Thread.sleep(5000);
