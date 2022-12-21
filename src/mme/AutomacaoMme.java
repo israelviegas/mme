@@ -1741,6 +1741,7 @@ public class AutomacaoMme {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(idRelatorioClassico)));
 		WebElement linkRelatorioClassico = driver.findElement(By.xpath(idRelatorioClassico));
 		String urlLinkRelatorioClassico = linkRelatorioClassico.getAttribute("href");
+		urlLinkRelatorioClassico = urlLinkRelatorioClassico.replaceAll("https://mme.accenture.com//Cross", "https://mme.accenture.com/Cross");
 		
 		// Acessando o Advanced Reporting
 		driver.get(urlLinkRelatorioClassico);
